@@ -110,12 +110,12 @@ favoritesWidget.addUserCallback = (data) => {
 // Удаление из списка избранных пользователей
 
 favoritesWidget.removeUserCallback = (data) => {
-	ApiConnector.removeUserFromFavorites(data, (response) => {
+	ApiConnector.removeUserFavorites(data, (response) => {
 		if (response.success) {
 			favoritesWidget.clearTable();
 			favoritesWidget.fillTable(response.data);
 			moneyManager.updateUsersList(response.data);
-			favoritesWidget.setMessage(response.success, `Пользователь успешно добавлен!`);
+			favoritesWidget.setMessage(response.success, `Пользователь успешно удалён!`);
 		} else {
 			favoritesWidget.setMessage(response.success, `Произошла ошибка: ${response.error}`);
 		}
